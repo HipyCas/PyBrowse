@@ -18,18 +18,20 @@ class AboutDialog(QDialog):
         self.buttonBox.rejected.connect(self.reject)
         
         layout = QVBoxLayout()
-        
+
+        # Title label
         title = QLabel("PyBrowse")
         font = title.font()
         font.setPointSize(20)
         title.setFont(font)
-        
         layout.addWidget(title)
-        
+
+        # Icon Label/Pixmap
         logo = QLabel()
         logo.setPixmap(QPixmap(os.path.join('images', 'ma-icon-128.png')))
         layout.addWidget(logo)
 
+        # More info Labels
         layout.addWidget(QLabel("Version 2020.1.0p67"))
         layout.addWidget(QLabel("Copyright 2020 HipyCas"))
 
@@ -103,14 +105,14 @@ class MainWindow(QMainWindow):
         file_menu = self.menuBar().addMenu("&File")
 
         # Open Action
-        open_file_action = QAction(QIcon(os.path.join('images', 'disk--arrow.png')), "Open file...", self)
-        open_file_action.setStatusTip('Open from file')
+        open_file_action = QAction(QIcon('ui/black/filled/folder_open-48dp.svg'), "Open file...", self)
+        open_file_action.setStatusTip('&Open from file')
         open_file_action.triggered.connect(self.open_file)
         file_menu.addAction(open_file_action)
 
         # Save Action
-        save_file_action = QAction(QIcon(os.path.join('images', 'disk--pencil.png')), "Save file...", self)
-        save_file_action.setText('Save to file')
+        save_file_action = QAction(QIcon('ui/black/filled/save-48dp.svg'), "Save file...", self)
+        save_file_action.setText('&Save to file')
         save_file_action.triggered.connect(self.save_file)
         file_menu.addAction(save_file_action)
 
@@ -118,14 +120,14 @@ class MainWindow(QMainWindow):
         help_menu = self.menuBar().addMenu("&Help")
 
         # About dialog Action
-        about_action = QAction(QIcon(os.path.join('images', 'question.png')), "About PyBrowse", self)
+        about_action = QAction(QIcon('ui/black/filled/help-48dp.svg'), "&About PyBrowse", self)
         about_action.setStatusTip("Find out more about PyBrowse")  # Hungry!
         about_action.triggered.connect(self.about)
         help_menu.addAction(about_action)
 
         # Visit official site Action
-        navigate_mozarella_action = QAction(QIcon(os.path.join('images', 'lifebuoy.png')),
-                                            "PyBrowse Homepage", self)
+        navigate_mozarella_action = QAction(QIcon('ui/black/filled/language-48dp.svg'),
+                                            "PyBrowse &Homepage", self)
         navigate_mozarella_action.setStatusTip("Go to PyBrowse Homepage")
         navigate_mozarella_action.triggered.connect(self.navigate_page)
         help_menu.addAction(navigate_mozarella_action)
